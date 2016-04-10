@@ -1,19 +1,37 @@
+<?php
+session_start();
+
+if(isset($_SESSION['zalogowany']) && ($_SESSION['zalogowany'] == true))
+{
+    header('Location: ./useractions/user.php');
+    exit();
+}
+
+?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Biblioteka Online</title>
     </head>
-    <body>
+    <body bgcolor='silver'>        
+    <center>
+        <p><h2>Logowanie</h2></p>
+        <p><a href='./useractions/rejestracja.php'>Rejestracja - załóż darmowe konto</a></p>
+        <form action='./useractions/zaloguj.php' method="post">
+        <p>Login<br>
+            <input type="text" name="login"/></p>
+        <p>Hasło<br>
+            <input type="password" name="haslo"/></p>
+        <p><input type="submit" name="send" value="Zaloguj"></p>
+        </form>
+        
         <?php
-        include 'config.php';
-        db_connect();
+        if(isset($_SESSION['blad']))
+        {
+            echo $_SESSION['blad'];
+        }
         ?>
-        <p>Udało się połączyć do bazy danych</p>
+    </center>
     </body>
 </html>
