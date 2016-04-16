@@ -16,7 +16,11 @@ if(!isset($_SESSION['zalogowany']))
     </head>
     <body bgcolor='silver'>
         <?php
-        echo "<p>Witaj ".@$_SESSION['login'].'! [<a href="logout.php">Wyloguj się</a>]</p>';
+        echo "<center><p><h2>Witaj ".@$_SESSION['login'].'! [<a href="logout.php">Wyloguj się</a>]</h2></p></center>';
         ?>
+    <center>
+        <p><a href="rezerwacja.php">Zarezerwuj książkę</a></p>
+        <p><a href="historia.php">Przeglądaj swoją historie</a></p>
+    </center>
     </body>
 </html>

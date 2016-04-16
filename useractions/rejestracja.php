@@ -46,6 +46,18 @@ if(isset($_POST['email']))
     
     $haslo_hash = password_hash($haslo1, PASSWORD_DEFAULT);
     
+    $sekret = "6LdJih0TAAAAAAYfIW0KO_F7YtoRALI8k4V23vQ7";
+    
+    $sprawdz = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$sekret.'&response='.$_POST['g-recaptcha-response']);
+    
+    $odpowiedz = json_decode($sprawdz);
+    
+    if($odpowiedz->success==false)
+    {
+        $wszystko_ok = false;
+        $_SESSION['e_bot'] = "Potwierdź, że nie jesteś botem";
+    }
+    
     require_once '../database/config.php';
     
     try
@@ -106,6 +118,7 @@ if(isset($_POST['email']))
     <head>
         <meta charset="UTF-8">
         <title>Biblioteka online</title>
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         <style>
             .error
             {
@@ -147,9 +160,14 @@ if(isset($_POST['email']))
             ?>
             <p>Powtórz hasło: <br>
                 <input type="password" name="haslo2"/></p>
-            <!--<p><label>
-                    <input type="checkbox" name="regulamin" /> Akceptuję regulamin
-                </label></p>-->
+                        <div class="g-recaptcha" data-sitekey="6LdJih0TAAAAADElB7FgyU4CsgD3UDZhq_wMiN2X"></div>
+            <?php
+            if(isset($_SESSION['e_bot']))
+            {
+                echo '<div class = "error">'.$_SESSION['e_bot'].'</div>';
+                unset($_SESSION['e_bot']);
+            }
+            ?>
             <p><input type="submit" name="send" value="Rejestracja"></p>
         </form>
     </center>
