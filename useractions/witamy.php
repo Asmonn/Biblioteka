@@ -21,7 +21,7 @@ else
     <body bgcolor='silver'>        
     <center>
         <p>Dziękujemy za rejestracje, możesz sie juz zalogować</p>
-        <p><a href='../index.php'>Zaloguj się na swoje konto</a></p>               
+        <p><a href='../index.php'>Zaloguj się na swoje konto</a></p>             
         
     </center>
     </body>

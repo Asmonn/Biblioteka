@@ -93,7 +93,7 @@ if(isset($_POST['email']))
             
             if($wszystko_ok == true)
             {
-                if($connect->query("insert into userdata values ('$login', 'xxxx', 'yyyy', '$email', '$haslo_hash')"))
+                if($connect->query("insert into userdata values ('$login', 'xxxx', 'yyyy', '$email', '$haslo_hash', 'user')"))
                 {
                     $_SESSION['udanarej']=true;
                     header('Location: witamy.php');
@@ -117,7 +117,10 @@ if(isset($_POST['email']))
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Biblioteka online</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+        <title>Biblioteka online</title> 
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src='https://www.google.com/recaptcha/api.js'></script>
         <style>
             .error
@@ -129,7 +132,11 @@ if(isset($_POST['email']))
         </style>
     </head>
     <body bgcolor='silver'>
-    <center>
+        <center>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-150 col-md-150 col-sm-150 col-xs-150">    
+        <p><h2>Rejestracja</h2></p>
         <form method="post">
             <p>Login: <br>
                 <input type="text" name="login"/></p>
@@ -170,6 +177,12 @@ if(isset($_POST['email']))
             ?>
             <p><input type="submit" name="send" value="Rejestracja"></p>
         </form>
-    </center>
+                <p><a href="../index.php">Powrót na strone główną</a></p>
+                </div>
+            </div>
+         </div>
+                      </center>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
 </html>
