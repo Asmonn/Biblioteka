@@ -2,7 +2,7 @@
 // definiujemy dane do połączenia z bazą danych
 $host = 'localhost';
 $dbuser ='root';
-$dbpass = 'nemesis6';
+$dbpass = 'pass';
 $dbname = 'biblioteka';
 
 ?>
